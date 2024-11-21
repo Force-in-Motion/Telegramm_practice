@@ -19,7 +19,7 @@ class ServiceData:
         Проверяет наличие файла по указанному пути
         :return: bool
         """
-        if not os.path.isfile(path_dir + r'\data notes'):
+        if not os.path.isfile(path_dir + r'\data_notes'):
             return False
         else:
             return True
@@ -55,20 +55,20 @@ class ServiceData:
         Считывает данные заметок из файла
         :return: dict
         """
-        with open(path_dir + r'\data notes', 'r', encoding='utf-8') as f:
+        with open(path_dir + r'\data_notes', 'r', encoding='utf-8') as f:
             data = json.load(f)
             return data
 
 
     @staticmethod
-    def write_notes(data) -> None:
+    def write_notes(*args) -> None:
         """
         Записывает данные в файл
         :param data: Принимает данные
         :return: None
         """
-        with open(path_dir + r'\data notes', 'w', encoding='utf-8') as f:
-            json.dumps(data, f, ensure_ascii=False, indent=4)
+        with open(path_dir + r'\data_notes', 'w', encoding='utf-8') as f:
+            json.dump(*args, f, ensure_ascii=False, indent=4)
 
 
     @staticmethod

@@ -18,11 +18,11 @@ notes =  Notes()
 @dp.message(Command('start'))
 async def start_handler(message: types.Message) -> None:
     mess = ('Бот помогает пользователю составить план дня,\n'
-            ' добавляя задачи с указанием времени и пометками о приоритете. \n'
-            '/add <время> <описание> - добавляет задачу (например, /add 14:00 Купить продукты).\n'
+            ' добавляя задачи с указанием времени. \n'
+            '/add <время> <описание> - добавляет задачу .\n'
             '/show - показывает список задач на день.\n'
-            '/del <время> - удаляет задачу по времени (например, /del 14:00).\n'
-            '/clear - очищает весь план дня. '
+            '/del <время> - удаляет задачу по времени .\n'
+            '/clear - очищает весь план дня. \n'
             '/save - сохраняет заметки  после добавления в список')
     await message.answer(mess)
 
@@ -31,7 +31,7 @@ async def start_handler(message: types.Message) -> None:
 async def add_task_handler(message: types.Message, command: CommandObject) -> None:
     if not (command.args is None):
         notes.create_note(command.args)
-        await message.answer('Заметка успешно добавлена')
+        await message.answer(f'Заметка {command.args} успешно добавлена')
     else:
         await message.answer('Введите время и текст заметки')
 
@@ -39,7 +39,7 @@ async def add_task_handler(message: types.Message, command: CommandObject) -> No
 @dp.message(Command('del'))
 async def remove_handler(message: types.Message, command: CommandObject) -> None:
     removed = notes.remove_note(command.args)
-    await message.answer('Заметка успешно удалена' if removed else 'Заметка с указанным временем не найдена')
+    await message.answer(f'Заметка {command.args} успешно удалена' if removed else 'Заметка с указанным временем не найдена')
 
 
 @dp.message(Command('clear'))
@@ -57,8 +57,7 @@ async def show_handler(message: types.Message) -> None:
 @dp.message(Command('save'))
 async def save_handler(message: types.Message) -> None:
     save = notes.save()
-    if save:
-        await message.answer('Заметки успешно сохранены' if save else 'Список заметок пуст, сохранять нечего')
+    await message.answer('Заметки успешно сохранены' if save else 'Список заметок пуст, сохранять нечего')
 
 
 @dp.message(F.text)

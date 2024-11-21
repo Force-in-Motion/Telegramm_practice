@@ -8,6 +8,8 @@ class Notes:
         Если есть сохраненные заметки, то выгружает их из файла, иначе создает пустой словарь
         """
         self.__notes = sd.get_notes()
+        self.__old_notes = self.__notes.copy()
+
 
     def create_note(self, data) -> None:
         """
@@ -64,7 +66,7 @@ class Notes:
         Сохраняет данные в файл если область временной памяти (словарь) не None и возвращает True иначе False
         :return: bool
         """
-        if not (self.__notes is None):
+        if self.__notes != self.__old_notes:
             sd.write_notes(self.__notes)
             return True
 
