@@ -19,7 +19,9 @@ class Notes:
         :return: None
         """
         data = data.split()
-        self.__notes[data[0]] = data[1]
+        key = data[0]
+        del data[0]
+        self.__notes[key] = ' '.join(data)
 
 
     def remove_note(self, data) -> bool:
