@@ -22,7 +22,7 @@ async def start_handler(message: types.Message) -> None:
     mess = ('Бот помогает пользователю выбрать рецепт по категории\n'
            'И предложить пошаговые инструкции для приготовления блюда\n'
            'Команды : \n'
-           '/create "категория" "название" "описание" — создает рецепт из заданной категории с заданным описанием\n'
+           '/add "категория" "название" "описание" — создает рецепт из заданной категории с заданным описанием\n'
            '/get "название" — предоставляет рецепт выбранного блюда\n'
            '/del "название" — удаляет рецепт по названию.\n'
            '/save сохраняет изменения в файл, изменения в данных вступят в силу после перезагрузки бота')
@@ -30,7 +30,7 @@ async def start_handler(message: types.Message) -> None:
     await message.answer(mess, reply_markup=Processing.create_inline_keyboard())
 
 
-@router.message(Command('create'))
+@router.message(Command('add'))
 async def create_handler(message: types.Message, command: CommandObject) -> None:
     """
     Обрабатывает полученную команду пользователя

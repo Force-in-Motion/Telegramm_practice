@@ -14,7 +14,8 @@ async def breakfast_callback_handler(callback: types.CallbackQuery) -> None:
     Обрабатывает клик по кнопке "Завтрак"
     :return: None
     """
-    await callback.message.answer(meals.get_breakfast_recipe())
+    result = meals.get_recipe("Завтрак")
+    await callback.message.answer(result if not (result is None) else 'Вы еще не добавили ни одного рецепта в категорию "Завтрак"')
     await callback.answer()
 
 
@@ -24,7 +25,8 @@ async def dinner_callback_handler(callback: types.CallbackQuery) -> None:
     Обрабатывает клик по кнопке "Обед"
     :return: None
     """
-    await callback.message.answer(meals.get_dinner_recipe())
+    result = meals.get_recipe("Обед")
+    await callback.message.answer(result if not (result is None) else 'Вы еще не добавили ни одного рецепта в категорию "Обед"')
     await callback.answer()
 
 
@@ -34,7 +36,8 @@ async def evening_callback_handler(callback: types.CallbackQuery) -> None:
     Обрабатывает клик по кнопке "Ужин"
     :return: None
     """
-    await callback.message.answer(meals.get_evening_recipe())
+    result = meals.get_recipe("Ужин")
+    await callback.message.answer(result if not (result is None) else 'Вы еще не добавили ни одного рецепта в категорию "Ужин"')
     await callback.answer()
 
 
@@ -44,7 +47,8 @@ async def dessert_callback_handler(callback: types.CallbackQuery) -> None:
     Обрабатывает клик по кнопке "Десерт"
     :return: None
     """
-    await callback.message.answer(meals.get_dessert_recipe())
+    result = meals.get_recipe("Десерт")
+    await callback.message.answer(result if not (result is None) else 'Вы еще не добавили ни одного рецепта в категорию "Десерт"')
     await callback.answer()
 
 

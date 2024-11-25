@@ -95,55 +95,15 @@ class Meals:
         self.__category = sd.read_category()
 
 
-    def get_breakfast_recipe(self) -> str:
+    def get_recipe(self, data) -> str:
         """
         Обрабатывает колбэк запрос, полученный от нажатия соответствующей кнопки
         :return: str
         """
         rec = f'Рецепты в категории "Завтрак" :\n'
 
-        for name, recipe in self.__recipe.current_data["Завтрак"].items():
+        for name, recipe in self.__recipe.current_data[data].items():
             rec += f'{name} : {recipe}\n'
 
-        return rec
+        return rec if self.__recipe.current_data[data] != {} else None
 
-
-    def get_dinner_recipe(self) -> str:
-        """
-        Обрабатывает колбэк запрос, полученный от нажатия соответствующей кнопки
-        :return: str
-        """
-        rec = f'Рецепты в категории "Обед" :\n'
-
-        for name, recipe in self.__recipe.current_data["Обед"].items():
-            rec += f'{name} : {recipe}\n'
-
-        return rec
-
-
-
-    def get_evening_recipe(self) -> str:
-        """
-        Обрабатывает колбэк запрос, полученный от нажатия соответствующей кнопки
-        :return: str
-        """
-        rec = f'Рецепты в категории "Ужин" :\n'
-
-        for name, recipe in self.__recipe.current_data["Ужин"].items():
-            rec += f'{name} : {recipe}\n'
-
-        return rec
-
-
-
-    def get_dessert_recipe(self) -> str:
-        """
-        Обрабатывает колбэк запрос, полученный от нажатия соответствующей кнопки
-        :return: str
-        """
-        rec = f'Рецепты в категории "Десерт" :\n'
-
-        for name, recipe in self.__recipe.current_data["Десерт"].items():
-            rec += f'{name} : {recipe}\n'
-
-        return rec
