@@ -18,6 +18,7 @@ async def input_name_handler(message: types.Message, state: FSMContext) -> None:
     :param message: Принимает текст сообщения, которое пользователь пишет в чат
     :param state: Состояние, находясь в котором бот реагирует на команду пользователя
     :return:None
+
     """
     await message.answer('Введите название темы для отзыва')
 

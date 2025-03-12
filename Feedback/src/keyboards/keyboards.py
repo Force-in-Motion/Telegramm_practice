@@ -32,4 +32,3 @@ class KeyBoards:
 
         return builder.as_markup(resize_keyboard=True)
 
-KeyBoards.create_inline_kb()
